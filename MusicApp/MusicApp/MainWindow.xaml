@@ -6,66 +6,128 @@
         xmlns:local="clr-namespace:MusicApp"
         xmlns:Views="clr-namespace:MusicApp.Views" x:Class="MusicApp.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" HorizontalAlignment="Left" Width="948" d:DesignHeight="661">
-    <Grid Margin="0,0,0,-7" Initialized="Grid_Initialized">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="503*"/>
-            <RowDefinition Height="8*"/>
-        </Grid.RowDefinitions>
-        <StackPanel Height="102" Margin="0,1,0,0" Width="758" RenderTransformOrigin="0.496,0.061" VerticalAlignment="Top" HorizontalAlignment="Right">
-            <Grid Height="98">
+        Title="Jamendo" Height="450" Width="800">
+    <Grid Initialized="Grid_Initialized">
+        <TabControl HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Stretch" SelectionChanged="TabControl_SelectionChanged">
+            <TabItem Header="Search music" Name="MusicSearch">
+                <Grid>
+                    <Label Content="Search music:" Width="90" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Button x:Name="searchBtn" Content="Search" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Margin="0,2,160,0" Click="searchBtn_Click"/>
+                    <TextBox x:Name="searchBox" HorizontalAlignment="Stretch" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="90,2,250,0"/>
+                    <ScrollViewer Name="SearchTracksScrollViewer" VerticalScrollBarVisibility="Auto" Margin="0,38,0,-8" Visibility="Hidden">
+                        <Grid>
+                            <Button x:Name="NextBTN" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="25" Width="47" Content="Next" Margin="493,0,246,4" RenderTransformOrigin="-0.17,1.18" Click="NextBTN_Click"></Button>
+                            <Button x:Name="PreviousBTN" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="25" Width="47" Content="Previous" Margin="233,0,506,4" RenderTransformOrigin="-0.17,1.18" Click="PreviousBTN_Click"></Button>
 
-                <Image x:Name="UserImagelbl"  HorizontalAlignment="Left" Height="58" Margin="696,5,0,29" Width="58" RenderTransformOrigin="-0.759,3.034"/>
-                <Label Content="Name" x:Name="UserNamelbl" HorizontalAlignment="Right" Height="48" VerticalAlignment="Top" Width="150" FontFamily="Microsoft Sans Serif" FontSize="18" RenderTransformOrigin="3.534,0.818" Margin="0,10,90,0"/>
-                <Views:PublicArtists x:Name="PublicArtistView" HorizontalAlignment="Left" Height="542" Margin="24,92,-4,-536" VerticalAlignment="Top" Width="738"/>
-            </Grid>
-        </StackPanel>
-        <Grid Width="182" VerticalAlignment="Top" HorizontalAlignment="Left" Height="565" Margin="6,4,0,0">
-            <Button Content="Fans" Name="FansBTN" Height="40" Margin="0,58,0,0" VerticalAlignment="Top" Width="182" FontSize="22" FontFamily="Microsoft Sans Serif" HorizontalAlignment="Center" Background="#FF2868F1" Foreground="#FFFFF9F9" ClickMode="Press" Click="FansBTN_Click">
-                <Button.OpacityMask>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Black" Offset="0"/>
-                        <GradientStop Color="White" Offset="1"/>
-                    </LinearGradientBrush>
-                </Button.OpacityMask>
-            </Button>
-            <Button Content="Tracks" Name="TracksBTN" Height="36" Margin="0,108,0,0" VerticalAlignment="Top" Width="182" FontSize="22" FontFamily="Microsoft Sans Serif" HorizontalAlignment="Center" Background="#FF2868F1" Foreground="#FFFFF9F9" ClickMode="Press" Click="TracksBTN_Click">
-                <Button.OpacityMask>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Black" Offset="0"/>
-                        <GradientStop Color="White" Offset="1"/>
-                    </LinearGradientBrush>
-                </Button.OpacityMask>
-            </Button>
-            <Button Content="Albums" Name="AlbumsBTN" Height="42" Margin="0,150,0,0" VerticalAlignment="Top" Width="182" FontSize="22" FontFamily="Microsoft Sans Serif" HorizontalAlignment="Center" Background="#FF2868F1" Foreground="#FFFFF9F9" ClickMode="Press" Click="AlbumsBTN_Click">
-                <Button.OpacityMask>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Black" Offset="0"/>
-                        <GradientStop Color="White" Offset="1"/>
-                    </LinearGradientBrush>
-                </Button.OpacityMask>
-            </Button>
-            <Button Content="Artists" x:Name="PublicArtists" Height="42" Margin="0,202,0,0" VerticalAlignment="Top" Width="182" FontSize="22" FontFamily="Microsoft Sans Serif" HorizontalAlignment="Center" Background="#FF2868F1" Foreground="#FFFFF9F9" ClickMode="Press" Click="PublicArtists_Click">
-                <Button.OpacityMask>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Black" Offset="0"/>
-                        <GradientStop Color="White" Offset="1"/>
-                    </LinearGradientBrush>
-                </Button.OpacityMask>
-            </Button>
-            <Button Content="PlayLists" x:Name="Playlists" Height="42" Margin="0,254,0,0" VerticalAlignment="Top" Width="182" FontSize="22" FontFamily="Microsoft Sans Serif" HorizontalAlignment="Center" Background="#FF2868F1" Foreground="#FFFFF9F9" ClickMode="Press">
-                <Button.OpacityMask>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Black" Offset="0"/>
-                        <GradientStop Color="White" Offset="1"/>
-                    </LinearGradientBrush>
-                </Button.OpacityMask>
-            </Button>
-        </Grid>
-        <Views:ArtistsView x:Name="ArtistView" HorizontalAlignment="Left" Height="586" Margin="186,48,0,0" VerticalAlignment="Top" Width="748" Grid.RowSpan="2"/>
+                            <StackPanel HorizontalAlignment="Left" Name="Track1" Height="140" Margin="50,10,0,0" VerticalAlignment="Top" Width="125" Background="WhiteSmoke">
+                                <Image Name="Track1Image" HorizontalAlignment="Left" Height="84" Width="125"/>
+                                <Label Name="Track1Name" Content="Label" HorizontalAlignment="Left" Height="28" Width="82"/>
+                                <Grid HorizontalAlignment="Left" Height="31" Width="125">
+                                    <Button Content="Add To"  Uid="1" Name="AddTo" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="52" Click="AddTo_Click"/>
+                                    <Button Content="Play" Uid="1" Name="Play" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="52" Margin="72,0,0,0" Click="Play_Click"/>
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Left" Background="WhiteSmoke" Name="Track2" Height="140" Margin="200,10,0,0" VerticalAlignment="Top" Width="125">
+                                <Image Name="Track2Image" HorizontalAlignment="Left" Height="84" Width="125"/>
+                                <Label Name="Track2Name" Content="Label" HorizontalAlignment="Left" Height="28" Width="82"/>
+                                <Grid HorizontalAlignment="Left" Height="31" Width="125">
+                                    <Button Content="Add To" Uid="2" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="52" Click="AddTo_Click"/>
+                                    <Button Content="Play" Uid="2" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="52" Margin="72,0,0,0" Click="Play_Click"/>
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Left" Name="Track3" Height="140" Background="WhiteSmoke" Margin="350,10,0,0" VerticalAlignment="Top" Width="125">
+                                <Image Name="Track3Image" HorizontalAlignment="Left" Height="84" Width="125"/>
+                                <Label Name="Track3Name" Content="Label" HorizontalAlignment="Left" Height="28" Width="82"/>
+                                <Grid HorizontalAlignment="Left" Height="31" Width="125">
+                                    <Button Content="Add To" Uid="3" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="52" Click="AddTo_Click"/>
+                                    <Button Content="Play" Uid="3" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="52" Margin="72,0,0,0" Click="Play_Click"/>
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Left" Name="Track4" Height="140" Background="WhiteSmoke" Margin="500,10,0,0" VerticalAlignment="Top" Width="125">
+                                <Image Name="Track4Image" HorizontalAlignment="Left" Height="84" Width="125"/>
+                                <Label Name="Track4Name" Content="Label" HorizontalAlignment="Left" Height="28" Width="82"/>
+                                <Grid HorizontalAlignment="Left" Height="31" Width="125">
+                                    <Button Content="Add To" Uid="4" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="52" Click="AddTo_Click"/>
+                                    <Button Content="Play" Uid="4" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="52" Margin="72,0,0,0" Click="Play_Click"/>
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Left" Name="Track5" Height="140" Margin="650,10,0,0" Background="WhiteSmoke" VerticalAlignment="Top" Width="125">
+                                <Image Name="Track5Image" HorizontalAlignment="Left" Height="84" Width="125"/>
+                                <Label Name="Track5Name" Content="Label" HorizontalAlignment="Left" Height="28" Width="82"/>
+                                <Grid HorizontalAlignment="Left" Height="31" Width="125">
+                                    <Button Content="Add To" Uid="5" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="52" Click="AddTo_Click"/>
+                                    <Button Content="Play" Uid="5" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="52" Margin="72,0,0,0" Click="Play_Click"/>
+                                </Grid>
 
+                            </StackPanel>
+
+                            <StackPanel HorizontalAlignment="Left" Name="Track6" Height="140" Margin ="50,170,0,0" VerticalAlignment="Top" Background="WhiteSmoke" Width="125">
+                                <Image Name="Track6Image" HorizontalAlignment="Left" Height="84" Width="125"/>
+                                <Label Name="Track6Name" Content="Label" HorizontalAlignment="Left" Height="28" Width="82"/>
+                                <Grid HorizontalAlignment="Left" Height="31" Width="125">
+                                    <Button Content="Add To" Uid="6" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="52" Click="AddTo_Click"/>
+                                    <Button Content="Play" Uid="6" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="52" Margin="72,0,0,0" Click="Play_Click"/>
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Left" Name="Track7" Height="140" Margin="200,170,0,0" VerticalAlignment="Top" Width="125" Background="WhiteSmoke">
+                                <Image Name="Track7Image" HorizontalAlignment="Left" Height="84" Width="125"/>
+                                <Label Name="Track7Name" Content="Label" HorizontalAlignment="Left" Height="28" Width="82"/>
+                                <Grid HorizontalAlignment="Left" Height="31" Width="125">
+                                    <Button Content="Add To" Uid="7" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="52" Click="AddTo_Click"/>
+                                    <Button Content="Play" Uid="7" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="52" Margin="72,0,0,0" Click="Play_Click"/>
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Left" Height="140" Name="Track8" Margin="350,170,0,0" VerticalAlignment="Top" Width="125" Background="WhiteSmoke">
+                                <Image Name="Track8Image" HorizontalAlignment="Left" Height="84" Width="125"/>
+                                <Label Name="Track8Name" Content="Label" HorizontalAlignment="Left" Height="28" Width="82"/>
+                                <Grid HorizontalAlignment="Left" Height="31" Width="125">
+                                    <Button Content="Add To" Uid="8" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="52" Click="AddTo_Click"/>
+                                    <Button Content="Play" Uid="8" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="52" Margin="72,0,0,0" Click="Play_Click"/>
+                                </Grid>
+
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Left" Height="140" Name="Track9" Margin="500,170,0,0" VerticalAlignment="Top" Width="125" Background="WhiteSmoke">
+                                <Image Name="Track9Image" HorizontalAlignment="Left" Height="84" Width="125"/>
+                                <Label Name="Track9Name" Content="Label" HorizontalAlignment="Left" Height="28" Width="82"/>
+                                <Grid HorizontalAlignment="Left" Height="31" Width="125">
+                                    <Button Content="Add To" Uid="9" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="52" Click="AddTo_Click"/>
+                                    <Button Content="Play" Uid="9" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="52" Margin="72,0,0,0" Click="Play_Click"/>
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Left" Name="Track10" Height="140" Margin="650,170,0,0" VerticalAlignment="Top" Width="125" Background="WhiteSmoke">
+                                <Image Name="Track10Image" HorizontalAlignment="Left" Height="84" Width="125"/>
+                                <Label Name="Track10Name" Content="Label" HorizontalAlignment="Left" Height="28" Width="82"/>
+                                <Grid HorizontalAlignment="Left" Height="31" Width="125">
+                                    <Button Content="Add To" Uid="10" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="52" Click="AddTo_Click"/>
+                                    <Button Content="Play" x:Uid="10" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="52" Margin="72,0,0,0" Click="Play_Click"/>
+                                </Grid>
+
+                            </StackPanel>
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Browse playlists" Name="browsePlaylistsTab">
+                <Grid>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" x:Name="playlistsScroller">
+                        <StackPanel x:Name="playlistsContent" HorizontalAlignment="Center" VerticalAlignment="Stretch">
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="My playlists" x:Name="myPlaylistsTab">
+                <Grid>
+                    <Button x:Name="importBtn" Content="Import" VerticalAlignment="Top" HorizontalAlignment="Center" Width="150" Margin="5"></Button>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" x:Name="myPlaylistsScroller" Margin="0,35,0,0">
+                        <Grid>
+                            <StackPanel x:Name="myPlaylistsContent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,50">
+                            </StackPanel>
+                            <Button Content="Load more" x:Name="loadMoreMyPlaylists" Visibility="Visible" HorizontalAlignment="Center" VerticalAlignment="Bottom"></Button>
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

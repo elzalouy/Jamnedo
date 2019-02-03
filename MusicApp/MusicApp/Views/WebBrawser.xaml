@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="Login" Height="513.971" Width="705.883" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top">
     <Grid>
-        <WebBrowser Height="483" Name="webBrowser" Width="698" Initialized="webBrowser_Initialized" Navigated="webBrowser_Navigated" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Visible"/>
+        <WebBrowser Height="483" Name="webBrowser" Initialized="webBrowser_Initialized" Navigated="webBrowser_Navigated" Margin="0" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Visible"/>
     </Grid>
 </Window>

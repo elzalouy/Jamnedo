@@ -10,10 +10,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using MusicApp.MusicAPIs.JSON_Classes;
-using MusicApp.MusicAPIs.Repository;
 using System.Web;
-
+using JamendoCoreAPI.Repository;
 namespace MusicApp.Views
 {
     /// <summary>
@@ -21,7 +19,8 @@ namespace MusicApp.Views
     /// </summary>
     public partial class WebBrawser : Window
     {
-        private User_Authentication GetUser=new User_Authentication();
+
+
         public WebBrawser()
         {
             InitializeComponent();
@@ -29,7 +28,7 @@ namespace MusicApp.Views
 
         private void webBrowser_Initialized(object sender, EventArgs e)
         {
-            string url = GetUser.GetAuthCode();
+            string url =App._userAuth.GetAuthCode();
             webBrowser.Navigate(new Uri(url));
         }
         
@@ -42,10 +41,8 @@ namespace MusicApp.Views
                 webBrowser.Visibility = Visibility.Hidden;
                 webBrowser.IsEnabled = false;
                 var qs = HttpUtility.ParseQueryString(source.Query).Get("code");
-                GetUser.GetAccessToken(qs);
-
-                MainWindow main = new MainWindow();
-                main.Show();
+                App._userAuth.GetAccessToken(qs);
+                App.mainWindow.Show();
                 this.Close();
             }
         }
